@@ -81,19 +81,6 @@ SET(CODAL_OUTPUT_NAME ${device.device})
 SET(CODAL_TARGET_PROCESSOR ${device.processor})
 SET(CODAL_TARGET_CPU_ARCHITECTURE ${device.architecture})
 
-# if this is the first build, lets copy a sample main.cpp from the target if available.
-if(NOT EXISTS ${CMAKE_CURRENT_LIST_DIR}/${CODAL_APP_SOURCE_DIR} AND EXISTS ${CMAKE_CURRENT_LIST_DIR}/${LIB_DEST}/${codal.target.name}/samples/main.cpp)
-    FILE(COPY ${CMAKE_CURRENT_LIST_DIR}/${LIB_DEST}/${codal.target.name}/samples/main.cpp DESTINATION ${CMAKE_CURRENT_LIST_DIR}/${CODAL_APP_SOURCE_DIR})
-endif()
-
-#copy samples and remove main.cpp
-if(NOT EXISTS ${CMAKE_CURRENT_LIST_DIR}/samples AND EXISTS ${CMAKE_CURRENT_LIST_DIR}/${LIB_DEST}/${codal.target.name}/samples/)
-    FILE(COPY ${CMAKE_CURRENT_LIST_DIR}/${LIB_DEST}/${codal.target.name}/samples DESTINATION ${CMAKE_CURRENT_LIST_DIR})
-    FILE(REMOVE ${CMAKE_CURRENT_LIST_DIR}/samples/main.cpp)
-endif()
-
-####################
-
 SET(TOOLCHAIN ${device.toolchain})
 SET(TOOLCHAIN_FOLDER "./utils/cmake/toolchains/${device.toolchain}")
 
